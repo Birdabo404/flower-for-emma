@@ -1,0 +1,148 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-color: #000;
+}
+
+.night {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(125deg, #2c3e50 0%, #000000 100%);
+  overflow: hidden;
+}
+
+/* Add stars */
+.night:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 25% 25%, white 1%, transparent 0%), 
+    radial-gradient(1px 1px at 50% 50%, white 1%, transparent 0%),
+    radial-gradient(2px 2px at 75% 75%, white 1%, transparent 0%),
+    radial-gradient(2px 2px at 10% 90%, white 1%, transparent 0%),
+    radial-gradient(1px 1px at 85% 15%, white 1%, transparent 0%);
+  background-size: 350px 350px;
+  animation: twinkle 10s linear infinite;
+}
+
+/* Add subtle nebula effect */
+.night:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at top right, rgba(255, 147, 214, 0.1) 0%, transparent 60%),
+              radial-gradient(ellipse at bottom left, rgba(147, 186, 255, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+  text-shadow: 0 0 20px white;
+  letter-spacing: 0px;
+}
+
+@media (min-width: 500px) {
+  .title {
+    letter-spacing: 20px;
+  }
+}
+
+@keyframes typing {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Terapkan animasi dengan delay */
+.title span {
+  opacity: 0;
+  animation: typing 1s ease forwards;
+  animation-delay: var(--delay);
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  border: none;
+  width: 15em;
+  height: 5em;
+  border-radius: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #1C1A1C;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+}
+
+.sparkle {
+  fill: #AAAAAA;
+  transition: all 800ms ease;
+}
+
+.text {
+  font-weight: 600;
+  color: #AAAAAA;
+  font-size: medium;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.btn:hover {
+  background: linear-gradient(0deg, #ffb6c1, #ff69b4);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.6),
+              inset 0px -4px 0px 0px rgba(0, 0, 0, 0.1),
+              0px 0px 0px 4px rgba(255, 255, 255, 0.3),
+              0px 0px 30px 10px #fff,
+              0px 0px 180px 30px #ff8dc7;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+.btn:hover .sparkle {
+  fill: white;
+  transform: scale(1.2);
+}
